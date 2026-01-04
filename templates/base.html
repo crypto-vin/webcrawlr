@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcrawlr Solutions</title>
+
+    <!-- LINK CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Optional: Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="/" class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Webcrawlr Logo">
+        </a>
+        <h1 href="/">Webcrawlr Solutions</h1>
+        <nav class="site-nav">
+            <a href="/">Home</a>
+            <a href="/services/">Services</a>
+            <a href="/projects/">Portfolio</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+        <!-- <button id="theme-toggle" class="theme-toggle">☀️</button> -->
+
+    </div>
+
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+    {% block content %}
+    <!-- Page-specific content will appear here -->
+    {% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <p>© 2026 Webcrawlr Solutions. All rights reserved.</p>
+        <a href="https://wa.me/254712897106" class="whatsapp-link">Chat on WhatsApp</a>
+    </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('[data-animate]').forEach(el => {
+    observer.observe(el);
+});
+
+const toggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+// Default dark mode
+if (!localStorage.getItem('theme')) {
+    root.classList.remove('light'); // dark mode is default
+} else {
+    if (localStorage.getItem('theme') === 'light') {
+        root.classList.add('light');
+    }
+}
+
+// Toggle on click
+toggle.addEventListener('click', () => {
+    root.classList.toggle('light');
+
+    localStorage.setItem(
+        'theme',
+        root.classList.contains('light') ? 'light' : 'dark'
+    );
+});
+
+const updateIcon = () => {
+    toggle.textContent = root.classList.contains('light') ? '🌙' : '☀️';
+};
+
+toggle.addEventListener('click', () => {
+    root.classList.toggle('light');
+    localStorage.setItem(
+        'theme',
+        root.classList.contains('light') ? 'light' : 'dark'
+    );
+    updateIcon();
+});
+
+// Initial icon
+updateIcon();
+
+</script>
+
+
+
+</body>
+</html>

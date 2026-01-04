@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-colorful hero-video">
+    
+    <div class="overlay"></div>
+    <div class="container hero-grid">
+        <video autoplay muted loop playsinline class="bg-video">
+        <source src="{% static 'videos/hero-bg.webm' %}" type="video/webm">
+        <source src="{% static 'videos/hero-bg.mp4' %}" type="video/mp4">
+        </video>
+        <div class="hero-text" data-animate>
+            
+            <h1>We Create Digital Experiences That Stand Out</h1>
+            <p>
+                High-performance websites, SEO, and hosting solutions
+                tailored for growing businesses.
+            </p>
+            <div class="hero-buttons">
+                <a href="/services/" class="btn btn-light">Explore Services</a>
+                <a href="/contact/" class="btn btn-outline">Get a Quote</a>
+            </div>
+        </div>
+
+        <div class="hero-visual" data-animate>
+            <img src="{% static 'images/hero-illustration.svg' %}" alt="">
+        </div>
+    </div>
+
+    <!-- floating blobs -->
+    <div class="floating-shapes">
+        <span></span><span></span><span></span>
+    </div>
+</section>
+
+
+<!-- SERVICES -->
+<section class="home-services">
+    <div class="container">
+        <h2 class="section-title">What We Do Best</h2>
+
+        <div class="service-cards">
+            <div class="service-card gradient-blue">
+                <h3>Web Development</h3>
+                <p>Modern, secure, and scalable websites built for performance.</p>
+            </div>
+
+            <div class="service-card gradient-purple">
+                <h3>SEO Optimization</h3>
+                <p>Boost visibility, traffic, and conversions organically.</p>
+            </div>
+
+            <div class="service-card gradient-green">
+                <h3>Hosting & Support</h3>
+                <p>Reliable hosting with ongoing maintenance and monitoring.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="home-portfolio">
+    <div class="container">
+        <h2 class="section-title light">Recent Projects</h2>
+
+        <div class="portfolio-cards">
+            <div class="portfolio-card">
+                <h4>E-Commerce Platform</h4>
+                <p>Django + Payments integration</p>
+            </div>
+            <div class="portfolio-card">
+                <h4>Corporate Website</h4>
+                <p>Modern brand redesign</p>
+            </div>
+            <div class="portfolio-card">
+                <h4>Booking System</h4>
+                <p>Automation & scheduling</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="home-cta">
+    <div class="container">
+        <h2>Ready to Build Something Amazing?</h2>
+        <p>Let’s turn your idea into a powerful digital product.</p>
+        <a href="/contact/" class="btn btn-dark">Start Your Project</a>
+    </div>
+</section>
+
+{% endblock %}

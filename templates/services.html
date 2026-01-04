@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="services-page">
+    <div class="container">
+        <h1 class="page-title">Our Services</h1>
+        <p class="page-subtitle">
+            We provide end-to-end digital solutions to help businesses grow online.
+        </p>
+
+        <!-- SERVICE: WEB DEVELOPMENT -->
+        <div class="service-row">
+            <img src="{% static 'images/services/web-development.png' %}" alt="Web Development">
+            <div class="service-content">
+                <h2>Web Development</h2>
+                <p>
+                    We design and build fast, secure, and scalable websites using
+                    modern technologies like <strong>Django</strong>, <strong>React</strong>,
+                    and REST APIs.
+                </p>
+                <ul>
+                    <li>Business & corporate websites</li>
+                    <li>E-commerce platforms</li>
+                    <li>Custom web applications</li>
+                    <li>API development & integrations</li>
+                </ul>
+                <a href="/services/web-dev/" class="btn primary">Learn More</a>
+            </div>
+        </div>
+
+        <!-- SERVICE: SEO -->
+        <div class="service-row reverse">
+            <img src="{% static 'images/services/seo.png' %}" alt="SEO Services">
+            <div class="service-content">
+                <h2>SEO Optimization</h2>
+                <p>
+                    We help your business rank higher on Google and attract the
+                    right audience organically.
+                </p>
+                <ul>
+                    <li>On-page SEO optimization</li>
+                    <li>Technical SEO audits</li>
+                    <li>Keyword research</li>
+                    <li>Performance & speed optimization</li>
+                </ul>
+                <a href="/services/seo/" class="btn primary">Learn More</a>
+            </div>
+        </div>
+
+        <!-- SERVICE: HOSTING -->
+        <div class="service-row">
+            <img src="{% static 'images/services/hosting.png' %}" alt="Hosting Services">
+            <div class="service-content">
+                <h2>Hosting & Deployment</h2>
+                <p>
+                    Reliable, secure, and scalable hosting solutions for your
+                    website or application.
+                </p>
+                <ul>
+                    <li>Cloud & VPS hosting</li>
+                    <li>Server setup & configuration</li>
+                    <li>Domain & SSL management</li>
+                    <li>Continuous monitoring</li>
+                </ul>
+                <a href="/services/hosting/" class="btn primary">Learn More</a>
+            </div>
+        </div>
+
+        <!-- SERVICE: MAINTENANCE -->
+        <div class="service-row reverse">
+            <img src="{% static 'images/services/maintenance.png' %}" alt="Maintenance">
+            <div class="service-content">
+                <h2>Maintenance & Support</h2>
+                <p>
+                    We keep your website running smoothly with ongoing support
+                    and regular updates.
+                </p>
+                <ul>
+                    <li>Bug fixes & updates</li>
+                    <li>Security monitoring</li>
+                    <li>Content updates</li>
+                    <li>Performance optimization</li>
+                </ul>
+                <a href="/contact/" class="btn primary">Get Support</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
