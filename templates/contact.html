@@ -1,1 +1,241 @@
-{% extends 'base.html' %}{% block content %}<h1>Contact</h1>{% endblock %}
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Section</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      
+    }
+
+    /* SECTION */
+    /* KEYFRAMES */
+    @keyframes bgZoomFade {
+        0% {
+            transform: scale(1.1);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgPan {
+        0% { background-position: center top; }
+        50% { background-position: center bottom; }
+        100% { background-position: center top; }
+    }
+
+
+    .contact-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 20px;
+        background: url('{% static "images/background/contactus-bg.jpg" %}') no-repeat center center;
+        background-size: cover;
+        position: relative;
+        color: #ffffff;
+        overflow: hidden;
+        animation: bgZoomFade 2.5s ease forwards;
+        animation: bgPan 10s ease-in-out infinite;
+    }
+
+    .contact-section::before {
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(2px);
+    }
+
+    .contact-wrapper {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 80px;
+        max-width: 1200px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .contact-header {
+        align-items: center; 
+    }
+    .contact-header h2 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        margin-left: 10px;
+        color: rgb(19, 19, 26);
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        max-width: 2000px;
+    }
+
+    .contact-text p {
+        font-size: 1.5rem;
+        line-height: 1.7;
+        color: blue;
+        margin-bottom: 80px;
+        max-width: 450px;
+    }
+
+    .info-item {
+      margin-bottom: 15px;
+      color: rgb(20, 12, 12);
+    }
+
+    .info-item strong {
+      font-weight: 600;
+      margin-right: 5px;
+    }
+
+    /* RIGHT FORM */
+    .contact-form-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .contact-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border: none;
+      border-bottom: 1px solid #d1d5db;
+      padding: 10px 4px;
+      font-size: 1rem;
+      background: transparent;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #000000;
+    }
+
+    .contact-form button {
+      margin-top: 10px;
+      padding: 20px 26px;
+      background: blue;
+      color: #ffffff;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .contact-form button:hover {
+      opacity: 0.85;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .form-row {
+        flex-direction: column;
+      }
+      .contact-form-container {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-text h2 {
+        font-size: 2rem;
+      }
+      .contact-text p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<section class="contact-section">
+    <div class="contact-header" align="center">
+        <h2>Contact Us</h2></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    </div>
+    <div class="contact-wrapper">
+        <!-- LEFT TEXT -->
+        <div class="contact-text">
+            <p>Ready to start your project or need more information? Fill out this form and we’ll get back to you promptly.</p>
+            <div class="info-item"><h2>Webcrawlr Inc.</h2></div>
+            <div class="info-item"><strong>Location:</strong> Nairobi, Kenya</div>
+            <div class="info-item"><strong>Email:</strong> <a href="mailto:info@webcrawlr.com">info@webcrawlr.com</a></div>
+            <div class="info-item"><strong>Phone:</strong> +254 729 487 044</div>
+            <div class="info-item"><strong>WhatsApp:</strong> <a href="https://wa.me/254712897106" class="whatsapp-link">Chat on WhatsApp</a></div>
+        </div> 
+
+        <!-- RIGHT FORM -->
+        <div class="contact-form-container">
+        <form class="contact-form" method="post">
+            {% csrf_token %}
+
+            <div class="form-row">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            </div>
+
+            <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+            </div>
+
+            <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+        </form>
+        </div>
+
+    </div>
+    </section>
+
+</body>
+</html>
+
+
+{% endblock %}
